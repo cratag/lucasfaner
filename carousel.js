@@ -3,20 +3,17 @@
   var track = document.querySelector(".carousel-track");
   if (!carousel || !track || !track.children.length) return;
 
-  var SPEED = 0.5;
-  var HOVER_RESUME_MS = 500;
-  var TOUCH_RESUME_MS = 2000;
-  var ARROW_RESUME_MS = 2000;
-  var JUMP_MS = 400;
+  var HOVER_RESUME_MS = 0;
+  var MOBILE_SPEED = 0.75;
+  var DESKTOP_SPEED = 0.33;
 
   var offset = 0;
   var paused = false;
-  var jumping = false;
   var resumeTimer = null;
   var rafId = null;
 
-  function gap() {
-    return parseFloat(getComputedStyle(track).gap) || 20;
+  function applyTransform() {
+    track.style.transform = "translateX(" + offset + "px)";
   }
 
   function cardStep() {
@@ -24,8 +21,14 @@
     return card ? card.offsetWidth + gap() : 0;
   }
 
-  function applyTransform() {
-    track.style.transform = "translateX(" + offset + "px)";
+  function gap() {
+    return parseFloat(getComputedStyle(track).gap) || 20;
+  }
+
+  function pause() {
+    paused = true;
+    clearTimeout(resumeTimer);
+    resumeTimer = null;
   }
 
   function recycleFront() {
@@ -35,21 +38,6 @@
       track.appendChild(track.children[0]);
       offset += step;
     }
-  }
-
-  function tick() {
-    if (!paused && !jumping) {
-      offset -= SPEED;
-      recycleFront();
-      applyTransform();
-    }
-    rafId = requestAnimationFrame(tick);
-  }
-
-  function pause() {
-    paused = true;
-    clearTimeout(resumeTimer);
-    resumeTimer = null;
   }
 
   function resume() {
@@ -64,88 +52,29 @@
     }, delay);
   }
 
-  function setTransition(enabled) {
-    track.style.transition = enabled
-      ? "transform " + JUMP_MS + "ms ease"
-      : "none";
+  function speed() {
+    return window.innerWidth < 600 ? MOBILE_SPEED : DESKTOP_SPEED;
   }
 
-  function jump(dir) {
-    if (jumping) return;
-    pause();
-    jumping = true;
-
-    var step = cardStep();
-    if (!step) {
-      jumping = false;
-      scheduleResume(ARROW_RESUME_MS);
-      return;
+  function tick() {
+    if (!paused) {
+      offset -= speed();
+      recycleFront();
+      applyTransform();
     }
-
-    if (dir > 0) {
-      setTransition(true);
-      offset -= step;
-      applyTransform();
-
-      var onEnd = function (e) {
-        if (e.target !== track || e.propertyName !== "transform") return;
-        track.removeEventListener("transitionend", onEnd);
-        setTransition(false);
-        track.appendChild(track.children[0]);
-        offset += step;
-        applyTransform();
-        jumping = false;
-        scheduleResume(ARROW_RESUME_MS);
-      };
-      track.addEventListener("transitionend", onEnd);
-    } else {
-      setTransition(false);
-      track.insertBefore(
-        track.children[track.children.length - 1],
-        track.children[0],
-      );
-      offset -= step;
-      applyTransform();
-
-      // Force reflow so the transition applies from the new offset
-      void track.offsetWidth;
-      setTransition(true);
-      offset += step;
-      applyTransform();
-
-      var onEndPrev = function (e) {
-        if (e.target !== track || e.propertyName !== "transform") return;
-        track.removeEventListener("transitionend", onEndPrev);
-        setTransition(false);
-        jumping = false;
-        scheduleResume(ARROW_RESUME_MS);
-      };
-      track.addEventListener("transitionend", onEndPrev);
-    }
+    rafId = requestAnimationFrame(tick);
   }
-
-  document.querySelectorAll(".carousel-btn").forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      jump(Number(btn.getAttribute("data-dir")));
-    });
-  });
 
   carousel.addEventListener("mouseenter", pause);
   carousel.addEventListener("mouseleave", function () {
     scheduleResume(HOVER_RESUME_MS);
   });
 
-  carousel.addEventListener("touchstart", pause, { passive: true });
-  carousel.addEventListener(
-    "touchend",
-    function () {
-      scheduleResume(TOUCH_RESUME_MS);
-    },
-    { passive: true },
-  );
-
+  offset = 0;
   applyTransform();
-  rafId = requestAnimationFrame(tick);
+  setTimeout(function () {
+    rafId = requestAnimationFrame(tick);
+  }, 1000);
 
   window.addEventListener("beforeunload", function () {
     cancelAnimationFrame(rafId);
