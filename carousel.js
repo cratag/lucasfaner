@@ -4,9 +4,9 @@
   if (!carousel || !track || !track.children.length) return;
 
   var SPEED = 0.5;
-  var HOVER_RESUME_MS = 500;
+  var HOVER_RESUME_MS = 0;
   var TOUCH_RESUME_MS = 2000;
-  var ARROW_RESUME_MS = 2000;
+  var ARROW_RESUME_MS = 1000;
   var JUMP_MS = 400;
 
   var offset = 0;
