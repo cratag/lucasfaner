@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lucas Faner — Software Engineer</title>
+  <meta name="description"
+    content="Lucas Faner. Building software that works. Professional software development services." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="theme.css" />
+  <link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
+  <main>
+    <div class="backdrop" aria-hidden="true">
+      <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" fill="none">
+        <defs>
+          <pattern id="grid" width="72" height="72" patternUnits="userSpaceOnUse">
+            <path d="M 72 0 L 0 0 0 72" stroke="#edae49" stroke-opacity="0.05" stroke-width="1" />
+          </pattern>
+          <radialGradient id="fade" cx="50%" cy="42%" r="65%">
+            <stop offset="0%" stop-color="white" stop-opacity="1" />
+            <stop offset="100%" stop-color="white" stop-opacity="0" />
+          </radialGradient>
+          <mask id="vignette">
+            <rect width="1200" height="800" fill="url(#fade)" />
+          </mask>
+        </defs>
+        <g mask="url(#vignette)">
+          <rect width="1200" height="800" fill="url(#grid)" />
+          <g stroke="#edae49" stroke-width="1">
+            <line x1="80" y1="640" x2="520" y2="120" stroke-opacity="0.12" />
+            <line x1="300" y1="720" x2="1080" y2="180" stroke-opacity="0.09" />
+            <line x1="700" y1="700" x2="1140" y2="260" stroke-opacity="0.12" />
+            <line x1="60" y1="240" x2="880" y2="80" stroke-opacity="0.08" />
+          </g>
+          <g fill="#edae49">
+            <circle cx="520" cy="120" r="3.5" fill-opacity="0.35" />
+            <circle cx="300" cy="720" r="3" fill-opacity="0.25" />
+            <circle cx="1080" cy="180" r="4" fill-opacity="0.3" />
+            <circle cx="880" cy="80" r="2.5" fill-opacity="0.25" />
+            <circle cx="80" cy="640" r="3" fill-opacity="0.2" />
+            <circle cx="1140" cy="260" r="2.5" fill-opacity="0.2" />
+            <circle cx="60" cy="240" r="2.5" fill-opacity="0.2" />
+            <circle cx="700" cy="700" r="3" fill-opacity="0.2" />
+          </g>
+          <circle cx="600" cy="340" r="260" stroke="#edae49" stroke-opacity="0.06" stroke-width="1" />
+          <circle cx="600" cy="340" r="380" stroke="#edae49" stroke-opacity="0.04" stroke-width="1" />
+        </g>
+      </svg>
+    </div>
+
+    <section class="hero">
+      <p class="hero-kicker rise">Software Engineer</p>
+      <h1 class="rise d1">Lucas Faner</h1>
+      <p class="hero-sub rise d2">Building software that works — reliable, considered, and made to last.</p>
+    </section>
+
+    <section class="projects rise d3" aria-label="Selected work">
+      <p class="hero-kicker">Selected Work</p>
+      <div class="carousel">
+        <button type="button" class="carousel-btn" data-dir="-1" aria-label="Previous project">&#8249;</button>
+        <div class="carousel-viewport">
+          <div class="carousel-track">
+
+            <!-- Trocar -->
+            <article class="project-card">
+              <div class="project-shot project-shot--trocar">
+                <img src="assets/trocar-logo.png" alt="Trocar logo" />
+              </div>
+              <div class="project-body">
+                <h3>Trocar</h3>
+                <p>Peer-to-peer bartering marketplace — built and shipped solo.</p>
+                <ul class="tags">
+                  <li>Rails</li>
+                  <li>React Native</li>
+                  <li>PostgreSQL</li>
+                  <li>Firebase</li>
+                  <li>AppsFlyer</li>
+                  <li>Nginx</li>
+                  <li>Puma</li>
+                  <li>Fastlane</li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- VenueApp -->
+            <article class="project-card">
+              <div class="project-shot project-shot--venue">
+                <img src="assets/venueapp-logo.png" alt="VenueApp logo" />
+              </div>
+              <div class="project-body">
+                <h3>VenueApp</h3>
+                <p>Event &amp; venue ticketing platform with real-time operations.</p>
+                <ul class="tags">
+                  <li>Rails</li>
+                  <li>React Native</li>
+                  <li>AWS ECS</li>
+                  <li>PostgreSQL</li>
+                  <li>PostGIS</li>
+                  <li>Redis</li>
+                  <li>Sidekiq</li>
+                  <li>Twilio</li>
+                  <li>New Relic</li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- RUG -->
+            <article class="project-card">
+              <div class="project-shot project-shot--rug project-shot--cover">
+                <img src="assets/rug-logo.png" alt="RUG logo" />
+              </div>
+              <div class="project-body">
+                <h3>RUG</h3>
+                <p>Real estate CRM for managing leads, properties, and client pipelines.</p>
+                <ul class="tags">
+                  <li>Rails</li>
+                  <li>React</li>
+                  <li>PostgreSQL</li>
+                  <li>Elasticsearch</li>
+                  <li>Sidekiq</li>
+                  <li>AWS S3</li>
+                  <li>ActionCable</li>
+                  <li>Heroku</li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- Fulbo -->
+            <article class="project-card">
+              <div class="project-shot project-shot--fulbo">
+                <img src="assets/fulbo-logo.png" alt="Fulbo logo" />
+              </div>
+              <div class="project-body">
+                <h3>Fulbo</h3>
+                <p>Pickup football organizer — create matches, invite friends, manage teams.</p>
+                <ul class="tags">
+                  <li>React Native</li>
+                  <li>Expo</li>
+                  <li>Supabase</li>
+                  <li>TypeScript</li>
+                  <li>Google Maps API</li>
+                  <li>Push Notifications</li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- Magister -->
+            <article class="project-card">
+              <div class="project-shot project-shot--magister">
+                <img src="assets/magister-logo.png" alt="Magister logo" />
+              </div>
+              <div class="project-body">
+                <h3>Magister</h3>
+                <p>Health insurance marketplace with real-time plan comparison and pricing engine.</p>
+                <ul class="tags">
+                  <li>Next.js</li>
+                  <li>TypeScript</li>
+                  <li>Node.js</li>
+                  <li>MongoDB</li>
+                  <li>Stripe</li>
+                  <li>Tailwind CSS</li>
+                  <li>Vercel</li>
+                  <li>Redis</li>
+                </ul>
+              </div>
+            </article>
+
+          </div>
+        </div>
+        <button type="button" class="carousel-btn" data-dir="1" aria-label="Next project">&#8250;</button>
+      </div>
+      <p class="projects-disclaimer">Due to client confidentiality agreements, only a selection of projects can be
+        displayed publicly.</p>
+    </section>
+
+    <section class="cta rise d4">
+      <p class="cta-line">Let's talk about your next project.</p>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="mailto:lucas@lucasfaner.com">Get in touch</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/lucas-manuel-faner/" rel="noopener">LinkedIn</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Lucas Faner</p>
+  </footer>
+
+  <script src="carousel.js" defer></script>
+</body>
+
+</html>

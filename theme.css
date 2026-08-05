@@ -1,0 +1,19 @@
+:root {
+  --bg-primary: #121212;
+  --bg-surface: #1a1a1a;
+  --bg-border: #242424;
+  --text-primary: #f5f0e8;
+  --text-secondary: #c2bdb5;
+  --text-muted: #8a8580;
+  --accent: #edae49;
+  --accent-hover: #d4982f;
+  --accent-light: #ffc966;
+  --carousel-gap: 1.25rem;
+  --carousel-pad: 1.5rem;
+  --venue--card-background-color: #ffffff;
+  --trocar--card-background-color: #5a8a6a;
+  --magister--card-background-color: #c7deef;
+  --fulbo--card-background-color: #162132;
+  --rug--card-background-color: #e10b0f;
+  --generic-card-background-color: #1a1f2a;
+}
